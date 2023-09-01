@@ -8,7 +8,7 @@ return {
     {
         "hrsh7th/cmp-nvim-lsp-signature-help",
         event = 'InsertEnter',
-        dependencies = {{'hrsh7th/nvim-cmp'}},
+        dependencies = { { 'hrsh7th/nvim-cmp' } },
     },
     {
         'williamboman/mason.nvim',
@@ -16,11 +16,6 @@ return {
         lazy = true,
         config = true,
     },
-    {
-        'onsails/lspkind.nvim',
-        lazy = true,
-    },
-
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
@@ -35,9 +30,36 @@ return {
             -- And you can configure cmp even more, if you want to.
             local cmp = require('cmp')
             local cmp_action = require('lsp-zero').cmp_action()
+            local kind_icons = {
+                Text = '',
+                Method = ' ',
+                Function = '',
+                Constructor = '',
+                Field = '',
+                Variable = '',
+                Class = '',
+                Interface = '',
+                Module = ' ',
+                Property = '',
+                Unit = '',
+                Value = '',
+                Enum = '',
+                Keyword = '',
+                Snippet = '',
+                Color = '',
+                File = '',
+                Reference = '',
+                Folder = ' ',
+                EnumMember = ' ',
+                Constant = '',
+                Struct = ' ',
+                Event = '',
+                Operator = '',
+                TypeParameter = '',
+            }
             cmp.setup({
                 window = {
-                    completion = cmp.config.window.bordered(),
+                    --completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
                 },
                 preselect = 'item',
@@ -59,12 +81,11 @@ return {
                 },
                 formatting = {
                     fields = { 'abbr', 'kind', 'menu' },
-                    format = require('lspkind').cmp_format({
-                        mode = 'symbol',       -- show only symbol annotations
-                        maxwidth = 50,         -- prevent the popup from showing more than provided characters
-                        ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
-                    })
-                }
+                    format = function(_, vim_item)
+                        vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+                        return vim_item
+                    end,
+                },
             })
         end
     },
