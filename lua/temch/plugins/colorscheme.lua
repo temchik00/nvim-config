@@ -31,7 +31,7 @@ return {
           treesitter = true,
           ts_rainbow = false,
           ts_rainbow2 = false,
-          rainbow_delimiters = true,
+          rainbow_delimiters = false,
           telescope = true,
           mason = true,
           which_key = true,
