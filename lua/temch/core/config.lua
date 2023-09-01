@@ -1,6 +1,5 @@
 vim.opt.termguicolors = true
 
-
 -- Line numbers and relative numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
