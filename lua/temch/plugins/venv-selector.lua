@@ -5,6 +5,7 @@ return {
     "nvim-telescope/telescope.nvim",
     "mfussenegger/nvim-dap-python"
   },
+  branch = "regexp",
   opts = {
     name = {
       "venv",
