@@ -29,3 +29,4 @@ local function toggle_wrap_mode()
   end
 end
 vim.keymap.set({"i", "v", "n"}, "<A-w>", toggle_wrap_mode, { desc = "toggle word wrap" })
+vim.keymap.set("n", "<Leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Find todos" })
