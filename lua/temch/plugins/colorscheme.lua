@@ -10,6 +10,13 @@ return {
     name = "catppuccin",
     config = function()
       require("catppuccin").setup({
+        custom_highlights = function(colors)
+        return {
+            LineNr = { fg = colors.teal},
+            LineNrAbove = { fg = colors.overlay0, bold=true},
+            LineNrBelow = { fg = colors.overlay0, bold=true},
+        }
+        end,
         flavour = "mocha",
         show_end_of_buffer = true,
         integrations = {
