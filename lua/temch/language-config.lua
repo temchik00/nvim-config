@@ -2,7 +2,7 @@ local M = {}
 
 M.lsp_servers = {
   'lua_ls',
-  'tsserver',
+  'ts_ls',
   'eslint',
   'bashls',
   'clangd',
