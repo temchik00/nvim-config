@@ -28,10 +28,18 @@ return {
       mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
         ['<S-Space>'] = cmp.mapping.complete(),
-        ['<Tab>'] = cmp_action.tab_complete(),
-        ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+          local col = vim.fn.col('.') - 1
+
+          if cmp.visible() then
+            cmp.select_next_item({behavior = 'select'})
+          elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+            fallback()
+          else
+            cmp.complete()
+          end
+        end, {'i', 's'}),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
       },
       formatting = {
         fields = { 'abbr', 'kind', 'menu' },

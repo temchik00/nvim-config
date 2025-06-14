@@ -1,6 +1,6 @@
 return {
   'VonHeikemen/lsp-zero.nvim',
-  branch = 'dev-v3',
+  branch = 'v4.x',
   lazy = true,
   config = false,
 }

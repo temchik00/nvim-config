@@ -10,7 +10,8 @@ return {
   config = function()
     -- This is where all the LSP shenanigans will live
 
-    local lsp = require('lsp-zero').preset({})
+    local lsp = require('lsp-zero')
+    lsp.setup({})
     local toggleSignature = require("toggle-signature")
 
     lsp.on_attach(function(client, bufnr)

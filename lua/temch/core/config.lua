@@ -26,3 +26,10 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.diagnostic.config({
+  virtual_lines=false,
+  virtual_text=true,
+  signs=true,
+  underline=true,
+})
